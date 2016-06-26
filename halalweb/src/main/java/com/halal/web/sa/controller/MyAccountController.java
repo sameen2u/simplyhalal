@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -20,10 +21,11 @@ public class MyAccountController extends BaseController{
 	 * Method forward the request to the loginpage
 	 */
 	@RequestMapping(value="/login", method=RequestMethod.GET)
-	public ModelAndView loginPageService(HttpServletRequest request, ModelAndView modelAndView){
-		modelAndView.setViewName("pages/mainTemplate");
+	public ModelAndView loginPageService(HttpServletRequest request, ModelAndView modelAndView,
+					@ModelAttribute("channel") String channel){
+		modelAndView.setViewName(channel+"/mainTemplate");
 		modelAndView.addObject("pageType","loginpage");
-		String finalHtml = getHtmlTemplate("desktop/account/loginpage.html", null);
+		String finalHtml = getHtmlTemplate(channel+"/account/loginpage.html", null);
 		modelAndView.addObject("loginHTML",finalHtml);
 		return modelAndView;
 	}
@@ -39,6 +41,12 @@ public class MyAccountController extends BaseController{
 			Map<String, Object> globalMap) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	protected String getTemplateName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

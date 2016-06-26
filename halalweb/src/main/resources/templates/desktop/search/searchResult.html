@@ -51,8 +51,8 @@ a {
 	<div class="Popular-Restaurants-content">
 		<div class="Popular-Restaurants-grids">
 			<div class="container">
-			<!-- globalmap - {{globalMap}} --> 
-			{{#globalMap.searchBusinesses}}
+			<!-- searchBusinesses -{{searchBusinesses}} -->
+			{{#searchBusinesses}}
 				<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.2s">
 					<div class="col-md-3 restaurent-logo">
 						<img src="images/restaurent-logo1.jpg" class="img-responsive" alt="" />
@@ -83,13 +83,13 @@ a {
 					</div>
 					<div class="clearfix"></div>
 				</div>
-				{{/globalMap.searchBusinesses}}
+				{{/searchBusinesses}}
 				
 				<div class="pagination clearfix">
 					
 					<ul class="pagination-ul">
-					<!-- globalMap.pagination - {{globalMap.pagination}} -->
-						{{#globalMap.pagination}}
+					<!-- pagination - {{#pagination}}{{pagination}}{{/pagination}} -->
+						{{#pagination}}
 							<li><a href="{{paginationUrl}}">
 								<c:if test="{{isSelectedPage}}"><strong></c:if>	
 									{{label}}
@@ -98,7 +98,7 @@ a {
 							<!-- <li><strong>2</strong>&nbsp;</li>
 							<li><a href="#">3</a>&nbsp;</li> -->
 							<!-- <li><a href="#">»</a>&nbsp;</li> -->
-							{{/globalMap.pagination}}
+							{{/pagination}}
 						</ul>
 						
 						

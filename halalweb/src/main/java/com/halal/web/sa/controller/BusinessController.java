@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -24,18 +25,20 @@ public class BusinessController extends BaseController{
 	/*
 	 * Method forward the request to the add business page
 	 */
-	@RequestMapping(value="/addBusiness", method=RequestMethod.GET)
-	public ModelAndView loginPageService(HttpServletRequest request, ModelAndView modelAndView){
-		modelAndView.setViewName("pages/mainTemplate");
+	@RequestMapping(value="/business", method=RequestMethod.GET)
+	public ModelAndView loginPageService(HttpServletRequest request, ModelAndView modelAndView,
+						@ModelAttribute("channel") String channel){
+		modelAndView.setViewName(channel+"/mainTemplate");
 		modelAndView.addObject("pageType","businesspage");
-		String finalHtml = getHtmlTemplate("desktop/business/addBusiness.html", null);
+		String finalHtml = getHtmlTemplate(channel+"/business/addBusiness.html", null);
 		modelAndView.addObject("businessHTML",finalHtml);
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/biz/add", method=RequestMethod.POST)
-	public ModelAndView addRestaurant(HttpServletRequest request, HttpServletResponse response, ModelAndView modelAndView) throws ApplicationException{
-		modelAndView.setViewName("pages/mainTemplate");
+	@RequestMapping(value="/business/add", method=RequestMethod.POST)
+	public ModelAndView addRestaurant(HttpServletRequest request, HttpServletResponse response, 
+			ModelAndView modelAndView, @ModelAttribute("channel") String channel) throws ApplicationException{
+		modelAndView.setViewName(channel+"/mainTemplate");
 		modelAndView.addObject("pageType","businesspage");
 		return super.performExecute(request, response, modelAndView);
 	}
@@ -49,5 +52,11 @@ public class BusinessController extends BaseController{
 			Map<String, Object> globalMap) {
 		modelAndView.addObject("globalMap", globalMap);
 		
+	}
+
+	@Override
+	protected String getTemplateName() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
