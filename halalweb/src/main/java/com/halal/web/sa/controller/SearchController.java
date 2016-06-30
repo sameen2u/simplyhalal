@@ -29,10 +29,10 @@ public class SearchController extends BaseController{
 	@RequestMapping( value="/",  method=RequestMethod.GET)
 	public ModelAndView mainExecute(HttpServletRequest request, HttpServletResponse response, 
 			ModelAndView modelAndView, @ModelAttribute("channel") String channel) throws ApplicationException, IOException{
-		if(channel.equals("mobile")){
-			modelAndView.setViewName(channel+"/index");
-			return modelAndView;
-		}
+//		if(channel.equals("mobile")){
+//			modelAndView.setViewName(channel+"/index");
+//			return modelAndView;
+//		}
 		modelAndView.setViewName(channel+"/mainTemplate");
 		
 		modelAndView.addObject("ishomepage","homepage");
@@ -50,6 +50,7 @@ public class SearchController extends BaseController{
 			return modelAndView;
 		}
 		modelAndView.setViewName(channel+"/mainTemplate");
+		request.setAttribute("channel", channel);
 		modelAndView.addObject("isSearchpage",Boolean.TRUE);
 		
 //		modelAndView.setViewName("search/searchResult");
@@ -62,7 +63,7 @@ public class SearchController extends BaseController{
 	}
 	
 	protected String getTemplateName() {
-		return "desktop/search/searchResult.html";
+		return "search/searchResult.html";
 	}
 
 	@Override

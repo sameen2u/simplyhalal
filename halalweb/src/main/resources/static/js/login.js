@@ -33,7 +33,7 @@ function login(username, password, rememberMe){
 	var formObject =  {"username": username, "password": password, "rememberMe":rememberMe};
 	var jsonString = JSON.stringify(formObject);
    	$.ajax({
-	       url: 'http://localhost:9191/HalalApi/v1/account/login',
+	       url: $('#loginApiUrl').val(),
 	       type: 'post',
 	       contentType: "application/json; charset=utf-8",
 	       data: jsonString,
@@ -56,7 +56,7 @@ function login(username, password, rememberMe){
 	    	   	}
 	       },
 	       beforeSend: function(){
-	    	   console.log('BeforeSend jsonString -'+jsonString);
+	    	   console.log('BeforeSend url -'+$('#loginApiUrl').val());
 	    	   if(navigator.cookieEnabled ==false){
 	    		   window.location='/HalalWeb/account/enableCookie';
 	    	   }		    	   

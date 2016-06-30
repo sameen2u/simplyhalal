@@ -1,17 +1,17 @@
 package com.halal.web.sa.controller;
 
-import java.util.Collections;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.halal.web.sa.common.HalalGlobalConstants;
 import com.halal.web.sa.service.BaseService;
 
 @Controller
@@ -23,9 +23,11 @@ public class MyAccountController extends BaseController{
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView loginPageService(HttpServletRequest request, ModelAndView modelAndView,
 					@ModelAttribute("channel") String channel){
+		String loginApiUrl = HalalGlobalConstants.API_LOGIN_SERVICE_URL;
+		modelAndView.addObject("loginApiUrl", loginApiUrl);
 		modelAndView.setViewName(channel+"/mainTemplate");
 		modelAndView.addObject("pageType","loginpage");
-		String finalHtml = getHtmlTemplate(channel+"/account/loginpage.html", null);
+		String finalHtml = getHtmlTemplate(channel+"/account/loginpage.html", modelAndView.getModel());
 		modelAndView.addObject("loginHTML",finalHtml);
 		return modelAndView;
 	}

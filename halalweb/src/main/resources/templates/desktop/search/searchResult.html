@@ -61,7 +61,7 @@ a {
 						<div class="logo-title">
 							<h4><a href="#">{{name}}</a></h4>
 						</div>
-						<div class="search-biz-address"><b>{{address.locality}}, {{address.city}}</b></div>
+						<div class="search-biz-address"><b>{{#address.locality}}{{address.locality}}{{/address.locality}}, {{address.city}}</b></div>
 						
 						<div class="search-biz-cuisine"><label>Cuisine:</label>&emsp;
 							<c:forEach var="cuisine" items="${business.cuisine}" >
@@ -91,9 +91,11 @@ a {
 					<!-- pagination - {{#pagination}}{{pagination}}{{/pagination}} -->
 						{{#pagination}}
 							<li><a href="{{paginationUrl}}">
-								<c:if test="{{isSelectedPage}}"><strong></c:if>	
-									{{label}}
-								<c:if test="{{isSelectedPage}}"></strong></c:if>	
+								{{#isSelectedPage}}<strong>{{/isSelectedPage}}	
+									
+								{{label}}
+								
+								{{#isSelectedPage}}</strong>{{/isSelectedPage}}		
 							</a>&nbsp;</li>
 							<!-- <li><strong>2</strong>&nbsp;</li>
 							<li><a href="#">3</a>&nbsp;</li> -->
@@ -207,5 +209,3 @@ a {
 					</script>
 				<a href="#" id="toTop" style="display: block;"> <span id="toTopHover" style="opacity: 1;"> </span></a>
 
-</body>
-</html>

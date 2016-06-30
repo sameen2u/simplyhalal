@@ -12,6 +12,7 @@ public class App extends SpringBootServletInitializer{
 
 	private static final Logger LOGGER = LoggerFactory.getLogger(App.class);
 	
+	@Override
 	protected SpringApplicationBuilder configure(SpringApplicationBuilder applicationBuilder){
 		return applicationBuilder.sources(App.class);
 	}

@@ -17,6 +17,7 @@ import com.halal.web.sa.service.BaseService;
 import com.halal.web.sa.service.BusinessService;
 
 @Controller
+@RequestMapping(value="/business")
 public class BusinessController extends BaseController{
 	
 	@Autowired
@@ -25,7 +26,7 @@ public class BusinessController extends BaseController{
 	/*
 	 * Method forward the request to the add business page
 	 */
-	@RequestMapping(value="/business", method=RequestMethod.GET)
+	@RequestMapping(method=RequestMethod.GET)
 	public ModelAndView loginPageService(HttpServletRequest request, ModelAndView modelAndView,
 						@ModelAttribute("channel") String channel){
 		modelAndView.setViewName(channel+"/mainTemplate");
@@ -35,11 +36,12 @@ public class BusinessController extends BaseController{
 		return modelAndView;
 	}
 	
-	@RequestMapping(value="/business/add", method=RequestMethod.POST)
+	@RequestMapping(value="/add", method=RequestMethod.POST)
 	public ModelAndView addRestaurant(HttpServletRequest request, HttpServletResponse response, 
 			ModelAndView modelAndView, @ModelAttribute("channel") String channel) throws ApplicationException{
 		modelAndView.setViewName(channel+"/mainTemplate");
-		modelAndView.addObject("pageType","businesspage");
+		request.setAttribute("channel", channel);
+//		modelAndView.addObject("pageType","searchpage");
 		return super.performExecute(request, response, modelAndView);
 	}
 	
@@ -56,7 +58,6 @@ public class BusinessController extends BaseController{
 
 	@Override
 	protected String getTemplateName() {
-		// TODO Auto-generated method stub
-		return null;
+		return "business/successBusiness.html";
 	}
 }

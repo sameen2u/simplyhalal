@@ -43,17 +43,18 @@ public class SearchService extends BaseService{
 			requestParam.put(HalalGlobalConstants.QUERY_PARAM_ADDRESS, address);
 			
 			
-		}
-		if(!StringUtils.isEmpty(keyword)){
-			requestParam.put(HalalGlobalConstants.QUERY_PARAM_KEYWORD, keyword);
-		}
-		if(distance != null && Integer.parseInt(distance) >5){
-			requestParam.put(HalalGlobalConstants.QUERY_PARAM_DISTANCE, distance);
-		}
-		else
-			requestParam.put(HalalGlobalConstants.QUERY_PARAM_DISTANCE, DEFAULT_SEARCH_DISTANCE);
-		if( page != null && Integer.parseInt(page) > 1){
-			requestParam.put(HalalGlobalConstants.QUERY_PARAM_PAGE, page);
+		
+			if(!StringUtils.isEmpty(keyword)){
+				requestParam.put(HalalGlobalConstants.QUERY_PARAM_KEYWORD, keyword);
+			}
+			if(distance != null && Integer.parseInt(distance) >5){
+				requestParam.put(HalalGlobalConstants.QUERY_PARAM_DISTANCE, distance);
+			}
+			else
+				requestParam.put(HalalGlobalConstants.QUERY_PARAM_DISTANCE, DEFAULT_SEARCH_DISTANCE);
+			if( page != null && Integer.parseInt(page) > 1){
+				requestParam.put(HalalGlobalConstants.QUERY_PARAM_PAGE, page);
+			}
 		}
 		return requestParam;
 	}
