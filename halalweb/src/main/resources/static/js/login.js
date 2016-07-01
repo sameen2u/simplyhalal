@@ -42,7 +42,7 @@ function login(username, password, rememberMe){
 	    	   	if(data.email == $('#username').val()){
 	    	   		createLoginCookie(data,rememberMe);
 	    	   		$('#ajax_loading').hide();
-	    	   		window.location='/';
+	    	   		window.location='/halalweb';
 	    	   	}
 	    	   	else {
 	    	   		if(data.email == $('#username').val()){
@@ -82,7 +82,7 @@ function signUp(){
 	       success: function(data) {
 	    	   	if(data == 'success'){
 	    	   		alert("Email "+email+" has been registered, please login!")
-	    	   		window.location='/login';
+	    	   		window.location='/halalweb/login';
 	    	   	}
 	    	   	else {
 	    	   		if(data.email == $('#username').val()){
