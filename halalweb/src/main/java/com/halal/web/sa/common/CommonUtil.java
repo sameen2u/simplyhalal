@@ -17,16 +17,20 @@ public class CommonUtil {
 	
 	private static final Logger LOGGER = Logger.getLogger(CommonUtil.class);
 	private static ResourceBundle resourceBundle = ResourceBundle.getBundle("Environment");
-	private static final String HOST_NAME = "API_HOST";
-	private static final String PORT_NUM = "API_PORT";
+//	private static final String HOST_NAME = "API_HOST";
+//	private static final String PORT_NUM = "API_PORT";
 	private static final ObjectMapper mapper = new ObjectMapper();
 	private static final ObjectReader reader = mapper.reader(HashMap.class);
 	
 	public static String buildUrl(String endPointUrl, Map<String, Object> requestProperty){
-		String host = resourceBundle.getString(HOST_NAME);
-		String port = resourceBundle.getString(PORT_NUM);
+		String host = resourceBundle.getString("API_HOST");
+		String port = resourceBundle.getString("API_PORT");
 		String serviceUrl;
-		serviceUrl = host+":"+port+"/"+endPointUrl;
+		if(host.contains("localhost")){
+			serviceUrl = host+":"+port+"/"+endPointUrl;
+		}else{
+			serviceUrl = host+"/"+endPointUrl;
+		}
 		if(requestProperty !=null && !requestProperty.isEmpty()){
 			return serviceUrl+"?"+constructQuery(requestProperty);
 		}

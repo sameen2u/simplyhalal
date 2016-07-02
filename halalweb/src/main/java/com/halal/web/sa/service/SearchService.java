@@ -31,6 +31,8 @@ public class SearchService extends BaseService{
 		request.setAttribute(HalalGlobalConstants.API_METHOD, "GET");
 		Map<String, Object> requestParam=null;
 		String address = request.getParameter("loc");
+		String lattitude = request.getParameter("lattitude");
+		String longitude = request.getParameter("longitude");
 		String keyword = request.getParameter("keyword");
 		String distance = request.getParameter("distance");
 		String page = request.getParameter("page");

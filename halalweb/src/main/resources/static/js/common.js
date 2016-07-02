@@ -41,11 +41,14 @@ function search(){
 	window.location='/HalalWeb/search';
 }
 
+//logout functionality
 function removeLoginToken(){
 	deleteCookie("hst");
 	deleteCookie("huat");
 	deleteCookie("hud");
-	window.location='/HalalWeb';
+//	var baseUrl = document.getElementById('baseUrl').value;
+//	alert('redirecting - '+baseUrl);
+	window.location='/halalweb';
 }
 
 function readCookie(name) {

@@ -7,12 +7,14 @@ $(document).ready(function(){
 	  $(".email-signup").delay(100).fadeIn(100);
 	  $("#login-box-link").removeClass("active");
 	  $("#signup-box-link").addClass("active");
+	  $('.login-error').text("");
 	});
 	$("#login-box-link").click(function(){
 	  $(".email-login").delay(100).fadeIn(100);;
 	  $(".email-signup").fadeOut(100);
 	  $("#login-box-link").addClass("active");
 	  $("#signup-box-link").removeClass("active");
+	  $('.login-error').text("");
 	});
 	
 	//Login functionality
@@ -46,24 +48,33 @@ function login(username, password, rememberMe){
 	    	   	}
 	    	   	else {
 	    	   		if(data.email == $('#username').val()){
-	    	   			$('.login-error').append('Some internal error, please refresh page and try again Later');
+	    	   			$('.login-error').text('Some internal error, please refresh page and try again Later');
 	    	   		}
 	    	   		else{
-	    	   			$('.login-error').append(data.description);
+	    	   			$('.login-error').text(data.description);
 	    	   		}		    	   		
 	    	   		console.log('append error msg = '+data.description);
 	    	   		$('#ajax_loading').hide();
 	    	   	}
 	       },
-	       beforeSend: function(){
-	    	   console.log('BeforeSend url -'+$('#loginApiUrl').val());
+	       beforeSend: function(xhr, opts){
+	    	   if($.trim($('#username').val()).length == 0 || $.trim($('#password').val()).length == 0){
+	    		   alert('Username or Password is empty');
+	    		   xhr.abort();
+	    	   }
 	    	   if(navigator.cookieEnabled ==false){
 	    		   window.location='/HalalWeb/account/enableCookie';
 	    	   }		    	   
 	       },
-	       error: function(jqXHR, textStatus, errorThrown){
-	    	   $('.login-error').append('Some internal error, please refresh page and try again Later');
-	    	   console.log("Something really bad happened- "+textStatus+", ERROR - " + errorThrown);
+	       error: function(xhr, textStatus, errorThrown){
+	    	   var errorResponse = $.parseJSON(xhr.responseText);
+	    	   if(errorResponse.errorDescription.length != 0){
+	    		   $('.login-error').text(errorResponse.errorDescription);
+	    	   }
+	    	   else{
+	    		   $('.login-error').text('Some internal error, please refresh page and try again Later');
+	    	   }
+	    	  // console.log("Something really bad happened- "+textStatus+", ERROR - " + errorResponse.errorDescription);
 	       }
 	   });
 }
@@ -85,11 +96,11 @@ function signUp(){
 	    	   		window.location='/halalweb/login';
 	    	   	}
 	    	   	else {
-	    	   		if(data.email == $('#username').val()){
-	    	   			$('.login-error').append('Some internal error, please refresh page and try again Later');
+	    	   		if(data.description.length == 0){
+	    	   			$('.login-error').text('Some internal error, please refresh page and try again Later');
 	    	   		}
 	    	   		else{
-	    	   			$('.login-error').append(data.description);
+	    	   			$('.login-error').text(data.description);
 	    	   		}		    	   		
 	    	   		console.log('append error msg = '+data.description);
 	    	   		$('#ajax_loading').hide();
@@ -99,11 +110,20 @@ function signUp(){
 	    	   console.log('BeforeSend jsonString -'+jsonString);
 	    	   if(navigator.cookieEnabled ==false){
 	    		   window.location='/HalalWeb/account/enableCookie';
-	    	   }		    	   
+	    	   }		
+	    	   if($.trim($('#user-full-name').val()).length == 0 || $.trim($('#user-email').val()).length == 0 || $.trim($('#user-password').val()).length == 0){
+	    		   $('.login-error').text('Please fill all the field');
+	    		   xhr.abort();
+	    	   }
 	       },
-	       error: function(jqXHR, textStatus, errorThrown){
-	    	   $('.login-error').append('Some internal error, please refresh page and try again Later');
-	    	   console.log("Something really bad happened- "+textStatus+", ERROR - " + errorThrown);
+	       error: function(xhr, textStatus, errorThrown){
+	    	   var errorResponse = $.parseJSON(xhr.responseText);
+	    	   if(errorResponse.description.length != 0){
+	    		   $('.login-error').text(errorResponse.description);
+	    	   }
+	    	   else{
+	    		   $('.login-error').text('Some internal error, please refresh page and try again Later');
+	    	   }
 	       }
 	   });
 }
