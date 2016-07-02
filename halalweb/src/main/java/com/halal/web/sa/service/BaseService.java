@@ -39,9 +39,9 @@ public abstract class BaseService
 	    	  return object;
 	      }
 	      responseJson = apiService.getMethod(serviceURL, isCacheable());
-	      if (StringUtils.isEmpty(responseJson)) {
-	    	  throw new ApplicationException("problem here- Empty JSON response String");
-	      }
+//	      if (StringUtils.isEmpty(responseJson)) {
+//	    	  throw new ApplicationException("problem here- Empty JSON response String");
+//	      }
 	      object = processResponse(responseJson, request, response); //CommonUtil.buildDomainMap(responseJson);
 //	      return object; 
 	  }

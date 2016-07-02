@@ -51,7 +51,7 @@ a {
 	<div class="Popular-Restaurants-content">
 		<div class="Popular-Restaurants-grids">
 			<div class="container">
-			<!-- searchBusinesses -{{searchBusinesses}} -->
+			<!-- searchBusinesses  -->
 			{{#searchBusinesses}}
 				<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.2s">
 					<div class="col-md-3 restaurent-logo">
@@ -83,6 +83,11 @@ a {
 					</div>
 					<div class="clearfix"></div>
 				</div>
+				{{/searchBusinesses}}
+				
+				
+				{{^searchBusinesses}}
+					<h1>No result found</h1>
 				{{/searchBusinesses}}
 				
 				<div class="pagination clearfix">
