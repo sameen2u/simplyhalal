@@ -12,7 +12,7 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyF9GzzR8Wmtrlv9tn98uVYo95GfXWT_4&libraries=places&libraries=places"></script>
 
 <script type="text/javascript">
-    google.maps.event.addDomListener(window, 'load', intilize);
+/*     google.maps.event.addDomListener(window, 'load', intilize);
     function intilize() {
         var autocomplete = new google.maps.places.Autocomplete(document.getElementById("txtautocomplete"), {types: ['geocode'],componentRestrictions: {country: "IN"}});
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
@@ -20,8 +20,7 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
         document.getElementById('lattitude').value = place.geometry.location.lat();
         document.getElementById('longitude').value = place.geometry.location.lng();
         });
-
-    };
+    }; */
 
     </script>
 </head>
@@ -31,7 +30,7 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
 		<div class="container">
 			<div class="top-header">
 				<div class="logo">
-					<a href="{{contextPath}}"><img src="{{baseUrl}}/images/fullLogo.png" class="img-responsive" alt="" /></a>
+					<a href="{{baseUrl}}"><img src="{{baseUrl}}/images/fullLogo.png" class="img-responsive" alt="" /></a>
 				</div>
 				
 				<div class="header-right">
@@ -40,7 +39,7 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
 								<li class="login-link"><a href="login">Login</a>  </li>
 								<li class="user-profile-link" style="display: none;"><a href="">'s Profile</a></li>
 								<li class="logout-link" style="display: none;"><a href="" onclick="removeLoginToken()">Logout</a>  </li>
-								<li><a href="business">Add Restaurant</a></li>
+								<li><a href="{{baseUrl}}/business">Add Restaurant</a></li>
 								<div class="clearfix"></div>
 							</ul>
 						</div>
@@ -48,16 +47,22 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
 				<div class="clearfix"></div>
 			</div>
 		</div>
+		
 		<div class="menu-bar">
 			<div class="container">
 				<div class="search-form-header">
 				<form class="form-wrapper cf" action="search">
-	     			<input class="searchLocation" name="loc" id="txtautocomplete" type="text"  placeholder="Search location">
-				  	<input class="searchKeyword" name="keyword" type="text" placeholder="Search for ... Restaurant, Cuisine, Dish">
+	     			<input class="searchLocation" name="loc" id="txtautocomplete" type="text"  placeholder="Search location"/>
+	     			<!-- <button class="close-icon" type="reset"></button> -->
+				  	<input class="searchKeyword" name="keyword" type="text" placeholder="Search for ... Restaurant, Cuisine, Dish"/>
 				  	<input type="hidden" id="lattitude" name="lattitude"/>
 				  	<input type="hidden" id="longitude" name="longitude"/>
 					<button class="searchButton" type="submit" >Search</button>
 				</form>
+				
 				</div>
 			</div>
 		</div>		
+<!-- 			<div id='button-holder'>
+						    <img src='{{baseUrl}}/images/localized_icon.png' />
+						</div> -->

@@ -17,6 +17,7 @@ public class SearchTransformation extends BaseTransformation{
 
 	@Override
 	public Object transformDomain(Map<String, Object> domainMap, HttpServletRequest request) {
+		setBusinessProfileUrl(domainMap, request);
 		pagination(domainMap, request);
 		return domainMap;
 	}
@@ -72,6 +73,17 @@ public class SearchTransformation extends BaseTransformation{
 		}
 		
 		return pageList;
+	}
+	
+	private void setBusinessProfileUrl(Map<String, Object> domainMap, HttpServletRequest request){
+		String baseUrl = request.getAttribute("baseUrl").toString();
+		String businessUrl = null;
+		List businesses = (List) domainMap.get("searchBusinesses");
+		for(int i=0; i< businesses.size(); i++){
+			Map map = (Map) businesses.get(i);
+			businessUrl = baseUrl+"/b"+map.get("profileUri");
+			map.put("businessUrl", businessUrl);
+		}
 	}
 
 }

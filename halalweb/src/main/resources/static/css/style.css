@@ -682,7 +682,7 @@ a.simpleCart_empty {
 	color: #1A1A1A;
 	font-size: 1.5em;
 	font-weight: 600;
-	margin-bottom: 1em;
+	margin-bottom: 0em;
 }
 .order-top p {
   color: #6b6969;
@@ -4171,21 +4171,38 @@ a.morebtn {
         height: 40px;
         padding: 10px 5px;
         float: left;    
-        font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        font: 13px 'lucida sans', 'trebuchet MS', 'Tahoma';
         border: 1px solid #000;
         background: #ccc;
         -moz-border-radius: 3px 0 0 3px;
         -webkit-border-radius: 3px 0 0 3px;
         border-radius: 3px 0 0 3px;      
     }
+    
+  /* 	#button-holder{
+            background-color:#f1f1f1;
+            border-top:thin solid #e5e5e5;
+            box-shadow:1px 1px 1px 1px #e5e5e5;
+            cursor:pointer;
+            float:left;
+            height:27px;
+            margin:11px 0 0 0;
+            text-align:center;
+            width:50px;
+        } */
+         
+        #button-holder img{
+            margin:4px;
+            width:20px; 
+        }
 
 	 .form-wrapper input.searchKeyword {
-        width: 62%;
+        width: 63%;
         height: 40px;
         padding: 10px 5px;
         float: left;    
         border: 1px solid #000;
-        font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        font: 14px 'lucida sans', 'trebuchet MS', 'Tahoma';
         background: #eee;
         -moz-border-radius: 3px 0 0 3px;
         -webkit-border-radius: 3px 0 0 3px;
@@ -4225,7 +4242,7 @@ a.morebtn {
         padding: 0;
         cursor: pointer;
         height: 40px;
-        width: 110px;
+        width: 92px;
         font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
         color: #fff;
         text-transform: uppercase;
@@ -4287,4 +4304,44 @@ a.morebtn {
 
 .pagination-ul li{
 	display: inline;
+}
+
+.searchLocation, .close-icon {
+	position: relative;
+	padding: 10px;
+}
+
+.close-icon {
+	border: 1px solid transparent;
+	background-color: transparent;
+	display: inline-block;
+	vertical-align: middle;
+	outline: 0;
+	cursor: pointer;
+}
+
+.close-icon:after {
+	content: "X";
+	display: block;
+	width: 15px;
+	height: 15px;
+	position: absolute;
+	background-color: #FA9595;
+	z-index: 1;
+	right: 35px;
+	top: 0;
+	bottom: 0;
+	margin: auto;
+	padding: 2px;
+	border-radius: 50%;
+	text-align: center;
+	color: white;
+	font-weight: normal;
+	font-size: 12px;
+	box-shadow: 0 0 2px #E50F0F;
+	cursor: pointer;
+}
+
+.searchLocation:not (:valid ) ~ .close-icon {
+	display: none;
 }

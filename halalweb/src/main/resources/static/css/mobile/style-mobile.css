@@ -32,7 +32,7 @@ body{
 	padding:0;
 	margin:0;
 	font-family: Arial, Helvetica, sans-serif;
-	font-size: 100%;
+	font-size: 13px;
 	background:#fff;
 }
 body input[type="text"],body input[type="button"],body input[type="submit"],body textarea{
@@ -49,7 +49,10 @@ ul{
 	padding:0;
 }
 label{
-	margin:0;
+	margin:2px;
+	color: gray;
+	font-size: 12px;
+	 display: inline-block;
 }
 .header {
 	border-top: 2px solid #5BBD50;
@@ -110,7 +113,7 @@ div#menu ul {
 	padding: 0.4em 0;
 }
 .banner{
-	background: url("../images/banner.jpg") no-repeat;
+	background: url("../../images/banner.jpg") no-repeat;
 	min-height: 130px;
 	background-size: cover;
 	position: relative;
@@ -1666,7 +1669,8 @@ address {
 }
 .restaurent-title h4{
 	color:#000000;
-	font-size: 0.85em;
+	font-size: 1.2em;
+	font-weight:bold;
 	margin: -1px 0 2px 0;
 }
 .logo-title{
@@ -1677,8 +1681,8 @@ address {
 	text-align:right;
 }
 .restaurent-title a {
-		color: #000000;
-		text-decoration: none;
+		color: #e54040;
+    	text-decoration: none;
 	}
 .restaurent-logo {
 	width: 35%;
@@ -1687,7 +1691,7 @@ address {
 	float: left;
 }
 .restaurent-title {
-	width: 29%;
+	width: 63%;
 	float: left;
 }
 .buy {
@@ -1874,26 +1878,27 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
     }
     
     .form-wrapper input.searchLocation {
-        width: 28%;
-        height: 40px;
+    	margin: -22px 3px 3px 35px;
+        width: 71%;
+        height: 6px;
         padding: 10px 5px;
         float: left;    
-        font: bold 15px 'lucida sans', 'trebuchet MS', 'Tahoma';
-        border: 1px solid #000;
-        background: #ccc;
+        font: 13px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        border: 0px solid white;
+        background: #D9D9D9;
         -moz-border-radius: 3px 0 0 3px;
         -webkit-border-radius: 3px 0 0 3px;
         border-radius: 3px 0 0 3px;      
     }
 
 	 .form-wrapper input.searchKeyword {
-	 	margin: -19px 0px 0px -21px; 
-        width: 89%;
-        height: 17px;
+	 	margin: -9px 0px 0px -21px; 
+        width: 86%;
+        height: 8px;
         padding: 10px 5px;
         float: left;    
         border: 1px solid #000;
-        font: bold 13px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        font: 13px 'lucida sans', 'trebuchet MS', 'Tahoma';
         background: #eee;
         -moz-border-radius: 3px 0 0 3px;
         -webkit-border-radius: 3px 0 0 3px;
@@ -1926,16 +1931,16 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
     }    
     
     .form-wrapper button {
-    	margin: -19px -19px 0px 0px;
+    	margin: -8px -15px 0px 0px;
 		overflow: visible;
         position: relative;
         float: right;
         border: 0;
         padding: 0;
         cursor: pointer;
-        height: 39px;
-        width: 63px;
-        font: bold 13px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
+        height: 30px;
+        width: 62px;
+        font: bold 13px/33px 'lucida sans', 'trebuchet MS', 'Tahoma';
         color: #fff;
         text-transform: uppercase;
         background: #d83c3c;
@@ -1976,3 +1981,49 @@ box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
         border: 0;
         padding: 0;
     }
+    .search-biz-address{
+    	font-size: 1em;
+    }
+    
+/* Pagination style */
+
+a {
+    color: #4A4A4A;
+    border: 0; outline: 0;
+}
+
+.pagination {
+    text-align: center;
+    width: 100%;
+}
+.pagination a, .pagination strong {
+    background: #fff;
+    display: inline-block;
+    margin-right: 3px;
+    padding: 4px 12px;
+    text-decoration: none;
+	line-height: 1.5em;
+	
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.pagination a:hover {
+    background-color: #BEBEBE;
+    color: #fff;
+}
+.pagination a:active {
+	background: rgba(190, 190, 190, 0.75);
+}
+.pagination strong {
+    color: #fff;
+    background-color: #d83c3c;
+}
+
+    .pagination-ul{
+	list-style-type:none;
+}
+
+.pagination-ul li{
+	display: inline;
+}

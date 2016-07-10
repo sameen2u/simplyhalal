@@ -59,14 +59,12 @@ a {
 					</div>
 					<div class="col-md-2 restaurent-title">
 						<div class="logo-title">
-							<h4><a href="#">{{name}}</a></h4>
+							<h4><a href="{{businessUrl}}">{{name}}</a></h4>
 						</div>
 						<div class="search-biz-address"><b>{{#address.locality}}{{address.locality}}{{/address.locality}}, {{address.city}}</b></div>
 						
 						<div class="search-biz-cuisine"><label>Cuisine:</label>&emsp;
-							<c:forEach var="cuisine" items="${business.cuisine}" >
 								<ul class="cuisineUl"><li>{{cuisine}}</li></ul>
-							</c:forEach>
 						</div>	
 						<div class="search-biz-hours"><label>Working Hours:</label>&emsp; 11 am to 10 pm</div>
 						<div class="search-biz-authenticity"><label>Halal Authenticity:</label>&emsp; {{authenticity}}</div>
@@ -102,19 +100,8 @@ a {
 								
 								{{#isSelectedPage}}</strong>{{/isSelectedPage}}		
 							</a>&nbsp;</li>
-							<!-- <li><strong>2</strong>&nbsp;</li>
-							<li><a href="#">3</a>&nbsp;</li> -->
-							<!-- <li><a href="#">»</a>&nbsp;</li> -->
 							{{/pagination}}
 						</ul>
-						
-						
-						<!-- <a href="#">1</a>
-						<strong>2</strong>
-						<a href="#">3</a>
-						
-						<a href="#">»</a>
-						&nbsp;<a href="#">Last</a> -->
 				</div>
 			</div>
 		</div>

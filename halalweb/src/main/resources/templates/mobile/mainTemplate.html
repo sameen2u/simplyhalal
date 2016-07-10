@@ -12,9 +12,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 <script src="js/jquery.min.js"></script>
-<script src="js/common.js"></script>
+<script src="{{baseUrl}}/js/common.js"></script>
 <!-- Custom Theme files -->
-<link href="css/mobile/style-mobile.css" rel="stylesheet" type="text/css" media="all" />
+<link href="{{baseUrl}}/css/mobile/style-mobile.css" rel="stylesheet" type="text/css" media="all" />
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyF9GzzR8Wmtrlv9tn98uVYo95GfXWT_4&libraries=places&libraries=places"></script>
 <!-- Custom Theme files -->
 </head>
 <body>
@@ -23,7 +24,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		<div class="container">
 			<div class="top-header">
 				<div class="logo">
-					<a href="/"><img src="images/fullLogo.png" id="main-logo" class="img-responsive" alt="" /></a>
+					<a href="{{baseUrl}}"><img src="{{baseUrl}}/images/fullLogo.png" id="main-logo" class="img-responsive" alt="" /></a>
 				</div>
 				<div class="top-menu">
 				<span onclick="location.href='#menu'" class="menu"> </span>
@@ -45,12 +46,14 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
+		
 		<div class="menu-bar">
 			<div class="container">
 				<div class="search-form-header">
 				<form class="form-wrapper cf" action="search">
 	     			<!-- <input class="searchLocation" name="loc" id="autocomplete" type="text" onFocus="geolocate()"  placeholder="Search location"> -->
-				  	<input class="searchKeyword" name="keyword" type="text" placeholder="Search for ... Restaurant, Cuisine, Dish">
+	     			<input class="searchLocation" name="loc" id="txtautocomplete" type="text"  placeholder="Search location" onFocus="focusSearchLocationField()"/><br/>
+				  	<input class="searchKeyword" name="keyword" type="text" placeholder="Search for ... Restaurant, Cuisine, Dish"/>
 					<button class="searchButton" type="submit" >Search</button>
 				</form>
 				</div>
@@ -78,41 +81,23 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 					<div class="col-md-3 contact-section-grid wow fadeInLeft" data-wow-delay="0.4s">
 						<h4>Site Links</h4>
 						<ul>
-							<li><img src="images/point.png" alt="" /></li>
+							<li><img src="{{baseUrl}}/images/point.png" alt="" /></li>
 							<li class="data"><a href="#">About Us</a></li>
 						</ul>
 						<ul>
-							<li><img src="images/point.png" alt="" /></li>
+							<li><img src="{{baseUrl}}/images/point.png" alt="" /></li>
 							<li class="data"><a href="#">Contact Us</a></li>
 						</ul>
 						<ul>
-							<li><img src="images/point.png" alt="" /></li>
+							<li><img src="{{baseUrl}}/images/point.png" alt="" /></li>
 							<li class="data"><a href="#">Privacy Policy</a></li>
 						</ul>
 						<ul>
-							<li><img src="images/point.png" alt="" /></li>
+							<li><img src="{{baseUrl}}/images/point.png" alt="" /></li>
 							<li class="data"><a href="#">Terms of Use</a></li>
 						</ul>
 					</div>
-					<div class="col-md-3 contact-section-grid wow fadeInRight" data-wow-delay="0.4s">
-						<h4>Follow Us On...</h4>
-						<ul>
-							<li><img src="images/facebook.png" alt="" /></li>
-							<li class="data"> <a href="#">  Facebook</a></li>
-						</ul>
-						<ul>
-							<li><img src="images/twitter.png" alt="" /></li>
-							<li class="data"> <a href="#">Twitter</a></li>
-						</ul>
-						<ul>
-							<li><img src="images/linkedin.png" alt="" /></li>
-							<li class="data"><a href="#"> Linkedin</a></li>
-						</ul>
-						<ul>
-							<li><img src="images/google-pluse.png" alt="" /></li>
-							<li class="data"><a href="#">Google Plus</a></li>
-						</ul>
-					</div>
+					 
 					<div class="col-md-3 contact-section-grid nth-grid wow fadeInRight" data-wow-delay="0.4s">
 						<h4>Subscribe Newsletter</h4>
 						<p>To get latest updates and food deals every week</p>

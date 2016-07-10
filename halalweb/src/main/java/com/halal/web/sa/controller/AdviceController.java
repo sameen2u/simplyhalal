@@ -20,16 +20,22 @@ public class AdviceController {
 		}
 		//to use base url in all the htmls
 		String baseUrl = null;
+		String protocol = "http://";
+		if(request.isSecure()){
+			protocol = "https://";
+		}
 		String contextPath = request.getContextPath();
 		String host = request.getServerName();
 		if(host.contains("localhost")){
-			baseUrl = "http://"+host+":"+request.getServerPort()+contextPath;
+			baseUrl = protocol+host+":"+request.getServerPort()+contextPath;
 		}
 		else{
-			baseUrl = "http://"+host+contextPath;
+			baseUrl = protocol+host+contextPath;
 		}
 		model.addAttribute("baseUrl",baseUrl);
+		request.setAttribute("baseUrl",baseUrl);
 		model.addAttribute("contextPath",contextPath);
+		request.setAttribute("contextPath",contextPath);
 	}
 
 }
