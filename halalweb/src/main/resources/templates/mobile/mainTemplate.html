@@ -11,7 +11,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <title>Simply Halal</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-<script src="js/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 <script src="{{baseUrl}}/js/common.js"></script>
 <!-- Custom Theme files -->
 <link href="{{baseUrl}}/css/mobile/style-mobile.css" rel="stylesheet" type="text/css" media="all" />
@@ -39,7 +39,9 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				
 				<div class="login-section">
 					<ul>
-						<li class="login-link-mobile"><a href="login">Login</a>  </li>
+						<li class="login-link"><a href="login">Login</a>  </li>
+						<li class="user-profile-link" style="display: none;"><a href="">'s Profile</a></li>
+						<li class="logout-link" style="display: none;"><a href="" onclick="removeLoginToken()">Logout</a>  </li>
 						<li><a href="business">Add Restaurant</a></li>
 						<div class="clear"></div>
 					</ul>
@@ -75,7 +77,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 		
 		
 		<!--top-links-->
-		<div class="contact-section" id="contact">
+	<!-- 	<div class="contact-section" id="contact">
 			<div class="container">
 				<div class="contact-section-grids">
 					<div class="col-md-3 contact-section-grid wow fadeInLeft" data-wow-delay="0.4s">
@@ -108,7 +110,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 				</div>
 			</div>
 		</div>
-	</div>
+	</div> -->
 	<div class="clear"></div>
 	<!-- content-section-ends -->
 	<!-- footer-section-starts -->

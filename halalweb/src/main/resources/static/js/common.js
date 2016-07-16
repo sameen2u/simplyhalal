@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	
+	/*	Location related functions start*/
 	//Localize the address functionality shared for desktop and mobile 
 /*	if (navigator.geolocation) {
 		console.log('in geolocation');
@@ -34,27 +34,9 @@ $(document).ready(function(){
         document.getElementById('longitude').value = place.geometry.location.lng();
         });
     };
+    /*	Location related functions ends*/
     
-    
-		//Null check for address search field
-		$('.form-wrapper').submit(function(){
-			if($.trim($('.searchLocation').val()).length == 0){
-				$('.form-wrapper input.searchLocation').css("background", "#FFBABA");
-	//	            $('.searchLocation').addClass('text_error');
-		            alert('Address filed is empty.');
-		            return false;
-			}
-			
-			Array.prototype.forEach.call(document.querySelectorAll('.clearable-input>[data-clear-input]'), function(el) {
-				  el.addEventListener('click', function(e) {
-				    e.target.previousElementSibling.value = '';
-				  });
-				});
-	
-	});
-	
-	
-	
+    /*	Login related functions starts*/
 	//logic to display User's Profile and Logout buttons on header
 	var hud = readCookie('hud');
 	if(hud != -1 && hud !=null && hud.length >3){
@@ -70,7 +52,58 @@ $(document).ready(function(){
 		$('.user-profile-link').hide();
 		$('.logout-link').hide();
 	}
+	 /*	Login related functions starts*/
+	
+	/*	search page start*/
+	//Null check for address search field
+	$('.form-wrapper').submit(function(){
+		if($.trim($('.searchLocation').val()).length == 0){
+			$('.form-wrapper input.searchLocation').css("background", "#FFBABA");
+//	            $('.searchLocation').addClass('text_error');
+	            alert('Address filed is empty.');
+	            return false;
+		}
+		Array.prototype.forEach.call(document.querySelectorAll('.clearable-input>[data-clear-input]'), function(el) {
+			  el.addEventListener('click', function(e) {
+			    e.target.previousElementSibling.value = '';
+			  });
+			});
+	});
+	
+	//filter update ajax call
+	$('.distance-filter').on('click',function(){
+		console.log(window.location.search);
+		var distance = $("input[name=distance-filter]:checked").val();
+		query = replaceQueryParam('page', '1', window.location.search);
+		 $.ajax({
+		        type: "GET",
+		        //appending the distance in the query param to update filter
+		        url: "/halalweb/search/ajax"+query+"&distance="+distance,
+		        beforeSend: function(){
+		        	$('.loading-icon').show();
+		        },
+		        success: function(response){
+		        	 var str = replaceQueryParam('distance', distance, query);
+		        	 window.location = window.location.pathname + str;
+			        // we have the response
+			        $('.Popular-Restaurants-content').html(response);
+		        },
+		        
+		        error: function(e){
+		        	console.log('Error: ' + e);
+		        }
+		  });
+	});
+	
+	/*	search page start*/
 });
+
+function replaceQueryParam(param, newval, searchUrl) {
+    var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
+    var query = searchUrl.replace(regex, "$1").replace(/&$/, '');
+
+    return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
+}
 
 
 

@@ -9,8 +9,8 @@ public class HalalGlobalConstants {
 	
 	private final static ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 	
-	public static String API_LOGIN_HOST = resourceBundle.getString("API_LOGIN_HOST");
-	public static String API_LOGIN_ENDPOINT = resourceBundle.getString("API_LOGIN_ENPOINT");
+	public static String API_HOST = resourceBundle.getString("API_HOST");
+	public static String API_ENDPOINT = resourceBundle.getString("API_ENDPOINT");
 	
 	@Value("${API_LOGIN_ENPOINT}")
 	static String loginApiEndpoint;
@@ -24,6 +24,6 @@ public class HalalGlobalConstants {
 	
 	public static final String API_METHOD ="apiMethod";
 	
-	public static final String API_LOGIN_SERVICE_URL =API_LOGIN_HOST+"/"+API_LOGIN_ENDPOINT;
+	public static final String API_SERVICE_URL =API_HOST+"/"+API_ENDPOINT;
 
 }

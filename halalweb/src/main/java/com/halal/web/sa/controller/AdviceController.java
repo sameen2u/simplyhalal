@@ -7,6 +7,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
+import com.halal.web.sa.common.HalalGlobalConstants;
+
 @ControllerAdvice
 public class AdviceController {
 	
@@ -36,6 +38,7 @@ public class AdviceController {
 		request.setAttribute("baseUrl",baseUrl);
 		model.addAttribute("contextPath",contextPath);
 		request.setAttribute("contextPath",contextPath);
+		
 	}
 
 }

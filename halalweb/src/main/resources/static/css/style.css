@@ -34,6 +34,9 @@ ul{
 	margin:0;
 	padding:0;
 }
+li {
+    float: left;
+}
 label{
 	margin:2px;
 	color: gray;
@@ -4300,6 +4303,7 @@ a.morebtn {
 
 .pagination-ul{
 	list-style-type:none;
+	margin-left: 50%;
 }
 
 .pagination-ul li{
@@ -4344,4 +4348,44 @@ a.morebtn {
 
 .searchLocation:not (:valid ) ~ .close-icon {
 	display: none;
+}
+
+#distance-filter {
+    margin:4px;   
+    float:left;
+    margin-left: 44%;
+    
+}
+
+#distance-filter label {
+    float:left;
+    width:40px;
+    margin:0px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+       
+}
+
+#distance-filter label span {
+    text-align:center;
+    font-size: 80%;
+    padding:10px 0px;
+    display:block;
+}
+
+#distance-filter label input {
+    position:absolute;
+    top:-20px;
+}
+
+#distance-filter input:checked + span {
+    background-color:#d83c3c;
+    color:#F7F7F7;
+}
+
+#distance-filter .distance-filter-label {
+    background-color:white;
+    color:#333;
 }

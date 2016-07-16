@@ -1,0 +1,64 @@
+<img src="images/loadingIcon.gif" class="loading-icon" alt="" style="display: none; margin: 0 auto;width: 5%;"/>
+<!-- content-section-starts -->
+	<div class="Popular-Restaurants-content">
+		<div class="Popular-Restaurants-grids">
+			<div class="container">
+			<!-- searchBusinesses  -->
+			{{#searchBusinesses}}
+				<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.2s">
+					<div class="col-md-3 restaurent-logo">
+						<img src="images/restaurent-logo1.jpg" class="img-responsive" alt="" />
+					</div>
+					<div class="col-md-2 restaurent-title">
+						<div class="logo-title">
+							<h4><a href="{{businessUrl}}">{{name}}</a></h4>
+						</div>
+						<div class="search-biz-address"><b>{{#address.locality}}{{address.locality}}{{/address.locality}}, {{address.city}}</b></div>
+						
+						<div class="search-biz-cuisine"><label>Cuisine:</label>&emsp;
+								<ul class="cuisineUl"><li>{{cuisine}}</li></ul>
+						</div>	
+						<div class="search-biz-hours"><label>Working Hours:</label>&emsp; 11 am to 10 pm</div>
+						<div class="search-biz-authenticity"><label>Halal Authenticity:</label>&emsp; {{authenticity}}</div>
+						<!-- <div class="search-biz-feature"><label>Features:</label>&emsp; Outdoor seating, Take away, Home delivery ...</div> -->
+					</div>
+					<div class="col-md-7 buy">	
+						<div class="search-biz-distance"><label>Distance:</label>&emsp; {{distance}} Km</div>
+						
+						<div class="rating">
+							<span>ratings</span>
+							<a href="#"> <img src="images/star1.png" class="img-responsive" alt="">(004)</a>
+						</div>
+						
+					</div>
+					<div class="clearfix"></div>
+				</div>
+				{{/searchBusinesses}}
+				
+				
+				{{^searchBusinesses}}
+					<h1>No result found</h1>
+				{{/searchBusinesses}}
+				<br/>
+				
+			</div>
+			
+		</div>
+		
+	</div>
+	
+	<div class="pagination clearfix">
+					
+					<ul class="pagination-ul">
+					<!-- pagination - {{#pagination}}{{pagination}}{{/pagination}} -->
+						{{#pagination}}
+							<li><a href="{{paginationUrl}}">
+								{{#isSelectedPage}}<strong>{{/isSelectedPage}}	
+									
+								{{label}}
+								
+								{{#isSelectedPage}}</strong>{{/isSelectedPage}}		
+							</a>&nbsp;</li>
+							{{/pagination}}
+						</ul>
+				</div>

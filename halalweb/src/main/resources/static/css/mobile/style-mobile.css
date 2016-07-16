@@ -5,7 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 /* reset */
-html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:1.5px;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
 article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
 ol,ul{list-style:none;margin:0px;padding:0px;}
 blockquote,q{quotes:none;}
@@ -47,6 +47,9 @@ p{
 ul{
 	margin:0;
 	padding:0;
+}
+li {
+    float: left;
 }
 label{
 	margin:2px;
@@ -1674,7 +1677,7 @@ address {
 	margin: -1px 0 2px 0;
 }
 .logo-title{
-	border-bottom: 1px dotted #000000;
+	/* border-bottom: 1px dotted #000000; */
 	width: 90%;
 }
 .buy{
@@ -1691,7 +1694,7 @@ address {
 	float: left;
 }
 .restaurent-title {
-	width: 63%;
+	width: 100%;
 	float: left;
 }
 .buy {
@@ -1723,7 +1726,7 @@ address {
 	color:#515151;
 }
 .Popular-Restaurants-grid {
-	padding-bottom: 0.5em;
+	padding-bottom: 1.7em;
 	border-bottom: 1px solid #D7D7D7;
 	margin-bottom: 1em;
 }
@@ -2026,4 +2029,42 @@ a {
 
 .pagination-ul li{
 	display: inline;
+}
+
+#distance-filter {
+    margin:4px;   
+    float:left;
+}
+
+#distance-filter label {
+    float:left;
+    width:40px;
+    margin:0px;
+    background-color:#EFEFEF;
+    border-radius:4px;
+    border:1px solid #D0D0D0;
+    overflow:auto;
+       
+}
+
+#distance-filter label span {
+    text-align:center;
+    font-size: 80%;
+    padding:10px 0px;
+    display:block;
+}
+
+#distance-filter label input {
+    position:absolute;
+    top:-20px;
+}
+
+#distance-filter input:checked + span {
+    background-color:#d83c3c;
+    color:#F7F7F7;
+}
+
+#distance-filter .distance-filter-label {
+    background-color:white;
+    color:#333;
 }

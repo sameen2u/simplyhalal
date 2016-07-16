@@ -1,51 +1,3 @@
-
-<style>
- .cuisineUl{
-	display: inline; list-style: none; 
-}
-.cuisineUl li{
-	display: inline; 
-}
-.cuisineUl li:AFTER {
-content: ", ";
-} 
-	
-/* Pagination style */
-
-a {
-    color: #4A4A4A;
-    border: 0; outline: 0;
-}
-
-.pagination {
-    text-align: center;
-    width: 100%;
-}
-.pagination a, .pagination strong {
-    background: #fff;
-    display: inline-block;
-    margin-right: 3px;
-    padding: 4px 12px;
-    text-decoration: none;
-	line-height: 1.5em;
-	
-    -webkit-border-radius: 3px;
-    -moz-border-radius: 3px;
-    border-radius: 3px;
-}
-.pagination a:hover {
-    background-color: #BEBEBE;
-    color: #fff;
-}
-.pagination a:active {
-	background: rgba(190, 190, 190, 0.75);
-}
-.pagination strong {
-    color: #fff;
-    background-color: #d83c3c;
-}
-</style>
-
 <div class="menu-bar" style="padding: 10px 0px 50px 0px;">
 	<div id="distance-filter">
 	    <label class="distance-filter-label"><input type="radio" class="distance-filter" name="distance-filter" 
@@ -61,6 +13,4 @@ a {
 	</div>
 </div>	
 
-{{>desktop/search/result-cell}}
-	
-	
+{{>mobile/search/result-cell}}

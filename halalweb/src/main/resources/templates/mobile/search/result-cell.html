@@ -1,0 +1,75 @@
+<img src="images/loadingIcon.gif" class="loading-icon" alt="" style="display: none; margin: 0 auto;width: 5%;"/>
+<!-- content-section-starts -->
+<div class="Popular-Restaurants-content">
+		<div class="Popular-Restaurants-grids">
+			<div class="container">
+			{{#searchBusinesses}}
+				<div class="Popular-Restaurants-grid wow fadeInRight" data-wow-delay="0.4s">
+					<div class="col-md-3 restaurent-logo">
+						<img src="images/restaurent-logo1.jpg" class="img-responsive" alt="" />
+					</div>
+					<div class="col-md-2 restaurent-title">
+						<div class="logo-title">
+						<!-- base url - {{#baseUrl}}{{baseUrl}}{{/baseUrl}} -->
+							<h4><a href="{{businessUrl}}">{{name}}</a></h4>
+						</div>
+						<div class="search-biz-address"><b>{{#address.locality}}{{address.locality}}{{/address.locality}}, {{address.city}}</b></div>
+						<div class="search-biz-distance"><label>Distance:</label>&emsp; {{distance}} Km</div>
+						<div class="search-biz-cuisine"><label>Cuisine:</label>&emsp;
+								<ul class="cuisineUl"><li>{{cuisine}}</li></ul>
+						</div>	
+						<br/>
+						<div class="search-biz-hours"><label>Working Hours:</label>&emsp; 11 am to 10 pm</div>
+						<div class="search-biz-authenticity"><label>Halal Authenticity:</label>&emsp; {{authenticity}}</div>
+						
+						
+						<div class="rating">
+							<label>Rating:</label>&emsp;
+							<a href="#"> <img src="images/star1.png" class="img-responsive" alt=""></a>
+						</div>
+					
+					
+					</div>
+					
+					<div class="clear"></div>
+					
+				</div>
+			{{/searchBusinesses}}	
+				<!-- <div class="Popular-Restaurants-grid wow fadeInLeft" data-wow-delay="0.4s">
+					<div class="col-md-3 restaurent-logo">
+						<img src="images/restaurent-logo1.jpg" class="img-responsive" alt="" />
+					</div>
+					<div class="col-md-2 restaurent-title">
+						<div class="logo-title logo-title-1">
+							<h4><a href="#">Subway</a></h4>
+						</div>
+						<div class="rating">
+							<a href="#"> <img src="images/star1.png" class="img-responsive" alt=""></a>
+						</div>
+					</div>
+					<div class="col-md-7 buy">
+						<span>$45</span>
+						<input type="button" value="buy">
+					</div>
+					
+			</div> -->
+		</div>
+	</div>
+</div>	
+<div class="clear"></div>
+
+<div class="pagination clearfix">
+					
+					<ul class="pagination-ul">
+					<!-- pagination - {{#pagination}}{{pagination}}{{/pagination}} -->
+						{{#pagination}}
+							<li><a href="{{paginationUrl}}">
+								{{#isSelectedPage}}<strong>{{/isSelectedPage}}	
+									
+								{{label}}
+								
+								{{#isSelectedPage}}</strong>{{/isSelectedPage}}		
+							{{/pagination}}
+						</ul>
+</div>
+<div class="clear"></div>

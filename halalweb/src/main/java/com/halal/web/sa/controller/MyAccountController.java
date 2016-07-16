@@ -23,7 +23,7 @@ public class MyAccountController extends BaseController{
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public ModelAndView loginPageService(HttpServletRequest request, ModelAndView modelAndView,
 					@ModelAttribute("channel") String channel){
-		String loginApiUrl = HalalGlobalConstants.API_LOGIN_SERVICE_URL;
+		String loginApiUrl = HalalGlobalConstants.API_SERVICE_URL;
 		modelAndView.addObject("loginApiUrl", loginApiUrl);
 		modelAndView.setViewName(channel+"/mainTemplate");
 		modelAndView.addObject("pageType","loginpage");

@@ -53,7 +53,6 @@ public class SearchController extends BaseController{
 		request.setAttribute("channel", channel);
 		modelAndView.addObject("isSearchpage",Boolean.TRUE);
 		
-//		modelAndView.setViewName("search/searchResult");
 		return super.performExecute(request, response, modelAndView);
 	}
 

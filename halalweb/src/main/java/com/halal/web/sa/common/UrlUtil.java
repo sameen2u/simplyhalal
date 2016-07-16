@@ -7,10 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 
 public class UrlUtil {
 	
-	private static final String CLASSNAME = UrlUtil.class.getName();
-	public static final  String NCNI_PATTEREN = "NCNI-5&|NCNI-5";
-	public static final  String END_CHAR_PATTEREN = "[&|?]$";
-
 	/**
 	 * Return the entire request URL including query string from request object
 	 * @param request Request object

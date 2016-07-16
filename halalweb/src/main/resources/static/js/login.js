@@ -35,7 +35,7 @@ function login(username, password, rememberMe){
 	var formObject =  {"username": username, "password": password, "rememberMe":rememberMe};
 	var jsonString = JSON.stringify(formObject);
    	$.ajax({
-	       url: $('#loginApiUrl').val(),
+	       url: $('#loginApiUrl').val()+"/v1/account/login",
 	       type: 'post',
 	       contentType: "application/json; charset=utf-8",
 	       data: jsonString,
@@ -58,6 +58,7 @@ function login(username, password, rememberMe){
 	    	   	}
 	       },
 	       beforeSend: function(xhr, opts){
+	    	   console.log('url -'+$('#loginApiUrl').val()+'/v1/account/login');
 	    	   if($.trim($('#username').val()).length == 0 || $.trim($('#password').val()).length == 0){
 	    		   alert('Username or Password is empty');
 	    		   xhr.abort();
@@ -67,6 +68,7 @@ function login(username, password, rememberMe){
 	    	   }		    	   
 	       },
 	       error: function(xhr, textStatus, errorThrown){
+	    	   console.log('error status-'+textStatus+' error -'+errorThrown);
 	    	   var errorResponse = $.parseJSON(xhr.responseText);
 	    	   if(errorResponse.errorDescription.length != 0){
 	    		   $('.login-error').text(errorResponse.errorDescription);
@@ -85,7 +87,7 @@ function signUp(){
 	var formObject =  {"fullName": $('#user-full-name').val(), "email": email, "password": password};
 	var jsonString = JSON.stringify(formObject);
    	$.ajax({
-	       url: 'http://localhost:9191/HalalApi/v1/account/signup',
+	       url: $('#loginApiUrl').val()+'/v1/account/signup',
 	       type: 'post',
 	       contentType: "application/json; charset=utf-8",
 	       data: jsonString,
@@ -107,7 +109,7 @@ function signUp(){
 	    	   	}
 	       },
 	       beforeSend: function(){
-	    	   console.log('BeforeSend jsonString -'+jsonString);
+	    	   alert($('#loginApiUrl').val()+'/v1/account/signup');
 	    	   if(navigator.cookieEnabled ==false){
 	    		   window.location='/HalalWeb/account/enableCookie';
 	    	   }		
