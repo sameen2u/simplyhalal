@@ -10,6 +10,7 @@
 </script>
 	<!-- content-section-starts -->
 	<div class="content">
+	<div id="all-error-msg" class="add-biz-error"></div>
 	<div class="main">
 	   <div class="container">
 		  <div class="register-but">
@@ -18,7 +19,7 @@
 					<h3>Add Restaurant</h3>
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						<span>RESTAURANT NAME<label>*</label></span>
-						<input name="rest-name" type="text"> 
+						<input name="rest-name" type="text" required/> 
 					 </div>
 					  <div class="wow fadeInRight" data-wow-delay="0.4s">
 						<span>DESCRIPTION<label></label></span>
@@ -26,19 +27,19 @@
 					 </div>
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						<span>STREET ADDRESS<label>*</label></span>
-						<input name="rest-st-addr" type="text"> 
+						<input name="rest-st-addr" type="text" required/> 
 					 </div>
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						 <span>CITY<label>*</label></span>
-						 <input name="rest-city" type="text"> 
+						 <input name="rest-city" type="text" required/> 
 					 </div>
 					  <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>PINCODE<label></label></span>
-						 <input name="rest-pincode" type="text"> 
+						 <input name="rest-pincode" type="text"/> 
 					 </div>
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						 <span>LANDMARK (This will quickly help to locate the location)<label></label></span>
-						 <input name="rest-landmark" type="text"> 
+						 <input name="rest-landmark" type="text"/> 
 					 </div>
 					 <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						 <span>RESTAURANT PHONE NUMBER<label></label></span>
@@ -63,7 +64,7 @@
 					  </div>
 					  <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>OPENING STATUS<label>*</label></span>
-					  <select name="rest-opening-status">
+					  <select name="rest-opening-status" required>
 						  <option >Select Status</option>
 						  <option value="opened">Opened</option>
 						  <option value="opening soon">Opening Soon</option>
@@ -74,11 +75,11 @@
 						
 					  <div class="wow fadeInLeft" data-wow-delay="0.4s">
 						 <span>YOUR EMAIL<label>*</label></span>
-						 <input name="rest-user-email" type="text"> 
+						 <input name="rest-user-email" type="text" required/> 
 					  </div> 
 					  <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>CUISINE<label>*</label></span>
-						 <input name="rest-cuisine" type="text"> 
+						 <input name="rest-cuisine" type="text" required/> 
 					  </div>
 					    <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>WEBSITE<label></label></span>
@@ -94,15 +95,15 @@
 					  </div>
 					  <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>HALAL AUTHENTICITY<label>*</label></span>
-					  <select name="rest-authenticity">
-						  <option value="volvo">Select Authenticity</option>
+					  <select name="rest-authenticity" required>
+						  <option value="" selected="selected">Select Authenticity</option>
 						  <option value="saab">Owners are Muslim</option>
 						  <option value="mercedes">Halal Sign Board</option>
 						  <option value="audi">Halal Certificate</option>
 						</select> 
 						</div>
 						<div class="wow fadeInRight" data-wow-delay="0.4s">
-						 <span>HALAL Offerings<label>*</label></span>
+						 <span>HALAL Offerings<label></label></span>
 					  <select name="rest-halal-serving">
 						  <option value="volvo">Select Options</option>
 						  <option value="saab">Full Halal</option>
@@ -153,6 +154,7 @@
 		   </div>
 	     </div>
 	    </div>
+	</div>
 <div class="special-offers-section">
 			<div class="container">
 				<div class="special-offers-section-head text-center dotted-line">

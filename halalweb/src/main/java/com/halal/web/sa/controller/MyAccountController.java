@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +18,8 @@ import com.halal.web.sa.service.BaseService;
 
 @Controller
 public class MyAccountController extends BaseController{
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(MyAccountController.class);
 	
 	/*
 	 * Method forward the request to the loginpage

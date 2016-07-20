@@ -4389,3 +4389,9 @@ a.morebtn {
     background-color:white;
     color:#333;
 }
+
+#all-error-msg{
+	color: red;
+	font-size: 15px;
+	text-align: center;
+}

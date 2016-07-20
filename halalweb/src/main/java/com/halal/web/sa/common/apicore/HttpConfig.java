@@ -12,6 +12,8 @@ import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
+import com.halal.web.sa.core.exception.ApiErrorResponseHandler;
+
 @Component
 public class HttpConfig {
 	
@@ -47,6 +49,7 @@ public class HttpConfig {
 	        ClientHttpRequestFactory clientHttpRequestFactory = new HttpComponentsClientHttpRequestFactory(defaultHttpClient);
 
 	        restTemplate = new RestTemplate(clientHttpRequestFactory);
+	        restTemplate.setErrorHandler(new ApiErrorResponseHandler());
 
 	    }
 

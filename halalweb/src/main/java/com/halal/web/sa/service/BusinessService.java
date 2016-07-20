@@ -10,13 +10,18 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import com.halal.web.sa.common.CommonUtil;
 import com.halal.web.sa.common.HalalGlobalConstants;
+import com.halal.web.sa.controller.SearchController;
 
 @Service
 public class BusinessService extends BaseService{
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(BusinessService.class);
 	
 	private static ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 

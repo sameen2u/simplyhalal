@@ -94,7 +94,7 @@ function signUp(){
 	       encode:true,
 	       success: function(data) {
 	    	   	if(data == 'success'){
-	    	   		alert("Email "+email+" has been registered, please login!")
+//	    	   		alert("Email "+email+" has been registered, please login!")
 	    	   		window.location='/halalweb/login';
 	    	   	}
 	    	   	else {
@@ -109,7 +109,7 @@ function signUp(){
 	    	   	}
 	       },
 	       beforeSend: function(){
-	    	   alert($('#loginApiUrl').val()+'/v1/account/signup');
+//	    	   alert($('#loginApiUrl').val()+'/v1/account/signup');
 	    	   if(navigator.cookieEnabled ==false){
 	    		   window.location='/HalalWeb/account/enableCookie';
 	    	   }		

@@ -18,10 +18,19 @@ public class SearchTransformation extends BaseTransformation{
 
 	@Override
 	public Object transformDomain(Map<String, Object> globalMap, HttpServletRequest request) {
+		globalMap.put("searchLocality", request.getParameter("loc"));
 		setBusinessProfileUrl(globalMap, request);
 		setFilters(globalMap, request);
 		pagination(globalMap, request);
 		return globalMap;
+	}
+	
+	private void generalTransformation(Map<String, Object> globalMap, HttpServletRequest request){
+		Map<String, Object> searchReport = CommonUtil.getJsonMap(globalMap, "searchReport");
+		int totalRecords = Integer.parseInt(searchReport.get("totalRecords").toString());
+		if(totalRecords < 1){
+			
+		}
 	}
 	
 	/*
@@ -90,11 +99,14 @@ public class SearchTransformation extends BaseTransformation{
 		String baseUrl = request.getAttribute("baseUrl").toString();
 		String businessUrl = null;
 		List businesses = (List) globalMap.get("searchBusinesses");
-		for(int i=0; i< businesses.size(); i++){
-			Map map = (Map) businesses.get(i);
-			businessUrl = baseUrl+"/b"+map.get("profileUri");
-			map.put("businessUrl", businessUrl);
+		if(businesses != null && !businesses.isEmpty()){
+			for(int i=0; i< businesses.size(); i++){
+				Map map = (Map) businesses.get(i);
+				businessUrl = baseUrl+"/b"+map.get("profileUri");
+				map.put("businessUrl", businessUrl);
+			}
 		}
+		
 	}
 	
 	/*

@@ -1,5 +1,6 @@
 package com.halal.web.sa.service;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
@@ -8,9 +9,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.halal.web.App;
 import com.halal.web.sa.common.CommonUtil;
 import com.halal.web.sa.common.HalalGlobalConstants;
 import com.halal.web.sa.core.exception.ApplicationException;
@@ -24,7 +28,7 @@ public class SearchService extends BaseService{
 	
 	private static ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 	public static final int DEFAULT_SEARCH_DISTANCE =5;
-
+	private static final Logger LOGGER = LoggerFactory.getLogger(SearchService.class);
 
 	@Override
 	protected Map<String, Object> buildRequestParam(HttpServletRequest request) {
@@ -36,7 +40,7 @@ public class SearchService extends BaseService{
 		String keyword = request.getParameter("keyword");
 		String distance = request.getParameter("distance");
 		String page = request.getParameter("page");
-		if(!StringUtils.isEmpty(address)){
+		if(!StringUtils.isEmpty(address) || !StringUtils.isEmpty(lattitude) && !StringUtils.isEmpty(longitude)){
 			requestParam = new LinkedHashMap<String, Object>();
 			address = address.replaceAll(" ", "+");
 			if(address.contains(",")){
@@ -44,7 +48,8 @@ public class SearchService extends BaseService{
 			}
 			requestParam.put(HalalGlobalConstants.QUERY_PARAM_ADDRESS, address);
 			
-			
+//			requestParam.put("lattitude", lattitude);
+//			requestParam.put("longitude", longitude);
 		
 			if(!StringUtils.isEmpty(keyword)){
 				requestParam.put(HalalGlobalConstants.QUERY_PARAM_KEYWORD, keyword);
@@ -63,9 +68,12 @@ public class SearchService extends BaseService{
 
 	@Override
 	protected String buildServiceUrl(HttpServletRequest request, Map<String, Object> requestParam) {
-		if(requestParam == null && requestParam.size()<1){
+		//if manually no parameters passed in query param then search for Camp Pune, address by default 
+		if(requestParam == null){
 			//need to implement exception handling here
-			return null;
+			requestParam = new HashMap<String, Object>();
+			requestParam.put("lattitude", "18.5122306"); 
+			requestParam.put("longitude", "73.88600999999994"); 
 		}
 		String endpointUrl = resourceBundle.getString("API_SEARCH_BUSINESS_ENPOINT");
 		return CommonUtil.buildUrl(endpointUrl, requestParam);

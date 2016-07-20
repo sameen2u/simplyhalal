@@ -1,6 +1,11 @@
 package com.halal.web.sa.common.apicore;
 
+
+import java.util.Map;
+
 import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -9,13 +14,17 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
-import org.springframework.web.client.RestTemplate;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestClientException;
 
+import com.halal.web.sa.common.CommonUtil;
 import com.halal.web.sa.common.registry.ApiResponseRegistry;
 import com.halal.web.sa.core.exception.ApplicationException;
 
 @Component
 public class ApiService {
+	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ApiService.class);
 	
 	@Autowired
 	HttpConfig httpConfig;
@@ -31,17 +40,22 @@ public class ApiService {
 						return responseEntity.getBody();
 					}
 					else{
-						throw new ApplicationException("Problem in getting Api response, Error - "+responseEntity.getStatusCode());
+						Map responseMap = (Map) CommonUtil.buildDomainMap(responseEntity.getBody());
+		            	LOGGER.error("Halal API Request failed for URL: "+ url);
+		            	LOGGER.error("Halal API Request failed with error response: "+ responseEntity.getBody());
+		            	String errorMsg = "Halal API Request failed with status : "+responseEntity.getStatusCode();
+		                throw new ApplicationException(errorMsg, responseMap);
 					}	
 				}
-				catch(Exception e){
-					String errorMsg = "Failed to get response from API url - "+url;
-					if(isCacheable){
-						
-					}
+				catch (HttpClientErrorException e) {
+//					LOGGER.error(e.getMessage());
+					throw new ApplicationException("An error ocurred during HTTP communication"+e.getMessage());
+				} catch (RestClientException e) {
+//					LOGGER.error(e.getMessage());
+					throw new ApplicationException("Couldn't connect to Api, rest client exception");
 				}
+			}
 			
-		}
 		//change this with Exception catching logic later(#need to change)
 		return null;
 	}
@@ -53,12 +67,32 @@ public class ApiService {
 	 * @return
 	 * @throws ApplicationException
 	 */
-	public String postMethod(String url, Object jsonObj, MediaType mediaType, boolean isCacheable){
+	public String postMethod(String url, Object jsonObj, MediaType mediaType, boolean isCacheable) throws ApplicationException{
+		String responsString = null;
 		HttpHeaders headers = new HttpHeaders();
 		headers.setContentType(mediaType);
 		HttpEntity<String> httpEntity = new HttpEntity<String>((String)jsonObj, headers);
-		ResponseEntity<String> responseEntity = httpConfig.getRestTemplate().exchange(url.toString(), HttpMethod.POST, httpEntity, String.class);
-		return responseEntity.getBody();
+		try {
+			ResponseEntity<String> responseEntity = httpConfig.getRestTemplate().exchange(url.toString(), HttpMethod.POST, httpEntity, String.class);
+//			responsString = responseEntity.getBody();
+			 if ((responseEntity.getStatusCode() == HttpStatus.OK) || (responseEntity.getStatusCode() == HttpStatus.NOT_FOUND)) {
+				 responsString = responseEntity.getBody();
+	            } else {
+	            	Map responseMap = (Map) CommonUtil.buildDomainMap(responseEntity.getBody());
+	            	LOGGER.error("Halal API Request failed for URL: "+ url);
+	            	LOGGER.error("Halal API Request failed with error response: "+ responseEntity.getBody());
+	            	String errorMsg = "Halal API Responded with Error status : "+responseEntity.getStatusCode();
+	                throw new ApplicationException(errorMsg, responseMap);
+	            }
+		}
+		catch (HttpClientErrorException e) {
+//			LOGGER.error(e.getMessage());
+			throw new ApplicationException("An error ocurred during HTTP communication"+e.getMessage());
+		} catch (RestClientException e) {
+//			LOGGER.error(e.getMessage());
+			throw new ApplicationException("Couldn't connect to Api, rest client exception");
+		}
+		return responsString;
 	}
 
 }
