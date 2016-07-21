@@ -65,7 +65,7 @@
 					  <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>OPENING STATUS<label>*</label></span>
 					  <select name="rest-opening-status" required>
-						  <option >Select Status</option>
+						  <option value="">Select Status</option>
 						  <option value="opened">Opened</option>
 						  <option value="opening soon">Opening Soon</option>
 						  <option value="temporary closed">Temporary Closed</option>
@@ -102,47 +102,43 @@
 						  <option value="audi">Halal Certificate</option>
 						</select> 
 						</div>
-						<div class="wow fadeInRight" data-wow-delay="0.4s">
+						<!-- <div class="wow fadeInRight" data-wow-delay="0.4s">
 						 <span>HALAL Offerings<label></label></span>
 					  <select name="rest-halal-serving">
 						  <option value="volvo">Select Options</option>
 						  <option value="saab">Full Halal</option>
 						  <option value="mercedes">Partial Halal</option>
 						</select> 
-						</div>
-					 <!--  <div class="wow fadeInRight" data-wow-delay="0.4s">
-						 <span>OTHER DETAILS<label></label></span>
-						 <textarea name="rest-other-detail"></textarea>
-					  </div>
-					  <div class="wow fadeInRight">
-						 <span>OTHER DETAILS<label></label></span>
-						 <textarea name="rest-other-detail"></textarea>
-					  </div> -->
-					  <div class="clearfix"> </div>
+						</div> -->
+					<div class="clearfix"> </div>
+					  
+						{{>desktop/business/hours-of-operation}}
+							
+					<div class="clearfix"> </div>
 					   <br>
 					   <br>
 					   <br>
 					   <!-- #need to correct full functionality of all below facilities -->
 					<table style="width:100%; background-color:white;">
-					<tr ><span ><label>Facility</label></span></tr>
+					<tr ><span><label>Facilities</label></span></tr>
 					
 					  <tr>
-					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Takeaway/to-go</label></td>
-					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Breakfast</label></td>		
-					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Outdoor seating</label></td>
-					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Home/business delivery</label></td>
+					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="facilities"  value="takeaway"/><i> </i>Takeaway</label></td>
+					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="facilities"  value="breakfast"/><i> </i>Breakfast</label></td>		
+					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="facilities"  value="outdoorSeating"/><i> </i>Outdoor Seating</label></td>
+					    <td style="width:25%"><label class="checkbox"><input type="checkbox" name="facilities"  value="homeDelivery"/><i> </i>Home/business delivery</label></td>
 					  </tr>
 					  <tr>
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Parking available</label></td>
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Shisha/hookah</label></td>		
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Cafe</label></td>
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Credit Cards Accepted</label></td>
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="mealCoupon"/><i> </i>Meal Coupons Accepted</label></td>
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="hooka"/><i> </i>Shisha/Hookah</label></td>		
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="juiceCenter"/><i> </i>Juice Center</label></td>
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="creditcardAccepted"/><i> </i>Credit Cards Accepted</label></td>
 					  </tr>
 					  <tr>
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Indoor Seating</label></td>
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>A.C Rooms</label></td>		
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Self Service</label></td>
-					    <td><label class="checkbox"><input type="checkbox" name="rest-is-owner" class="rest-is-owner"><i> </i>Luxury Dining</label></td>
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="indoorSeating"/><i> </i>Indoor Seating</label></td>
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="acRoom"/><i> </i>A.C Rooms</label></td>		
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="catering"/><i> </i>Catering available</label></td>
+					    <td><label class="checkbox"><input type="checkbox" name="facilities"  value="luxuryDining"/><i> </i>Luxury Dining</label></td>
 					  </tr>
 					</table>
 					

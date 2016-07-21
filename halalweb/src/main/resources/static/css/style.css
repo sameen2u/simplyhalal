@@ -1702,6 +1702,12 @@ ul.women_pagenation li a:hover{
 	float: left;
 	margin: 10px 0;
 }
+
+.fadeInCenter div {
+	float: none;
+	margin: 10px 0;
+}
+
 .register-top-grid span, .register-bottom-grid span {
 	color:#555;
 	font-size: 1.1em;
@@ -4394,4 +4400,8 @@ a.morebtn {
 	color: red;
 	font-size: 15px;
 	text-align: center;
+}
+
+.fadeInCenter{
+	float: initial;
 }

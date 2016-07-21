@@ -90,7 +90,7 @@ public class ApiService {
 			throw new ApplicationException("An error ocurred during HTTP communication"+e.getMessage());
 		} catch (RestClientException e) {
 //			LOGGER.error(e.getMessage());
-			throw new ApplicationException("Couldn't connect to Api, rest client exception");
+			throw new ApplicationException("Couldn't connect to Api, rest client exception", e.getMessage());
 		}
 		return responsString;
 	}

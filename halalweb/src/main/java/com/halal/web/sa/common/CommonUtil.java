@@ -20,7 +20,7 @@ public class CommonUtil {
 //	private static final String HOST_NAME = "API_HOST";
 //	private static final String PORT_NUM = "API_PORT";
 	private static final ObjectMapper mapper = new ObjectMapper();
-	private static final ObjectReader reader = mapper.reader(HashMap.class);
+	private static final ObjectReader reader = mapper.readerFor(HashMap.class);
 	
 	public static String buildUrl(String endPointUrl, Map<String, Object> requestProperty){
 		String host = resourceBundle.getString("API_HOST");
