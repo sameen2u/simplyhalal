@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +22,10 @@ public class BusinessProfileService extends BaseService{
 	BusinessProfileTransformation businessProfileTransformation;
 
 	@Override
-	protected Map<String, Object> buildRequestParam(HttpServletRequest request) {
+	protected Map<String, Object> buildRequestParam(HttpServletRequest request) throws ApplicationException {
+		if(!StringUtils.isNumeric((String) request.getAttribute("profileId"))){
+			throw new ApplicationException("Profile id is not numeric");
+		}
 		request.setAttribute(HalalGlobalConstants.API_METHOD, "GET");
 		Map<String, Object> requestparam = new HashMap<String, Object>();
 		requestparam.put("city", request.getAttribute("city"));

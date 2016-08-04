@@ -10,7 +10,36 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
 	new WOW().init();
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAyF9GzzR8Wmtrlv9tn98uVYo95GfXWT_4&libraries=places&libraries=places"></script>
+<style type="text/css">
+ /* http://docs.jquery.com/UI/Autocomplete#theming*/
+.ui-autocomplete { position: absolute; cursor: default; background:white; }   
 
+/* workarounds */
+html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% in IE6 */
+.ui-menu {
+    list-style:none;
+    padding: 2px;
+    margin: 0;
+    display:block;
+    float: left;
+}
+.ui-menu .ui-menu {
+    margin-top: -3px;
+}
+.sugg_type_tag {
+    border: 1px solid #ddd;
+    border-radius: 50px;
+    display: block !important;
+    font-size: 11px;
+    padding: 1px 8px;
+    /* position: absolute; */
+    right: 8px;
+    top: 8px;
+    /* width: auto !important; */
+    float : right;
+    color: #666;
+}
+</style>
 <script type="text/javascript">
 /*     google.maps.event.addDomListener(window, 'load', intilize);
     function intilize() {
@@ -21,8 +50,58 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
         document.getElementById('longitude').value = place.geometry.location.lng();
         });
     }; */
-
-    </script>
+   
+	$(document).ready(function() {
+		var autoData;
+		$(function() {
+			$(".searchKeyword").autocomplete({
+				minLength:2,
+				source : function(request, response) {
+					$.ajax({
+						url : "http://localhost:9191/HalalApi/v1/business/search/pune",
+						type : "GET",
+						data : {
+							term : request.term
+						},
+						dataType : "json",
+						success : function(data) {
+							autoData = data.keywords;
+							response($.map(data.keywords, function(v, i) {
+								return {
+									label : v.keyword,
+									value : v.keyword,
+									type : v.type,
+									profileUri : v.profileUri,
+								};
+							}));
+						}
+					});
+				},
+				//this function executes after selecting any option from auto populate drop down
+				select: function( event, ui ) {
+					//console.log('selected ui.item.uri -'+ui.item.uri);
+					$( "#project-description" ).html( ui.item.type);
+					if(ui.item.type == 'outlet'){
+						var baseUrl = $('input#baseUrl').val();
+						var bizProfileUrl = baseUrl+'/b'+ui.item.profileUri;
+						console.log('bizProfileUrl -'+bizProfileUrl);
+						window.location= bizProfileUrl;
+					}
+					if(ui.item.type == 'cuisine'){
+						$('.searchKeyword').val(ui.item.label);
+						$('.form-wrapper').submit();
+					}
+				},
+				open: function(event, ui) {
+				       $('.ui-autocomplete li').each(function(index){
+				    	   $(this).append('<span class="sugg_type_tag">'+autoData[index].type+'</span>');
+				       });
+				}
+			});
+		});
+		
+	});
+</script>
 </head>
 <body>
     <!-- header-section-starts -->
@@ -51,7 +130,7 @@ Spoon graphic by <a href="http://www.freepik.com">Freepik</a> from <a href="http
 		<div class="menu-bar">
 			<div class="container">
 				<div class="search-form-header">
-				<form class="form-wrapper cf" action="search">
+				<form class="form-wrapper cf" action="{{baseUrl}}/search">
 	     			<input class="searchLocation" name="loc" id="txtautocomplete" type="text"  placeholder="Search location"/>
 	     			<!-- <button class="close-icon" type="reset"></button> -->
 				  	<input class="searchKeyword" name="keyword" type="text" placeholder="Search for ... Restaurant, Cuisine, Dish"/>

@@ -9,9 +9,9 @@
 				<p><h4>Features</h4></p>
 				<p><b>Phone:</b> {{phone}}</p>
 				<P><b>Status:</b> Opened</P>
-				<P><b>Cuisine:</b> {{cuisine}}</P>
-				<P><b>Website:</b>{{website}}</P>
-				<P><b>Halal Authenticity:</b>{{authenticity}}</P>
+				<P><b>Cuisine:</b> {{#cuisine}}{{cuisine}}{{/cuisine}}</P>
+				<P><b>Website:</b>{{#website}}{{website}}{{/website}}</P>
+				<P><b>Halal Authenticity:</b>{{#authenticity}}{{authenticity}}{{/authenticity}}</P>
 			</li>
 			<li class="item-lists">
 				<div class="special-info grid_1 simpleCart_shelfItem">

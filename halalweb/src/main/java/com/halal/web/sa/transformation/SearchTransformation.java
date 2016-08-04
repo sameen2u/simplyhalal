@@ -19,6 +19,9 @@ public class SearchTransformation extends BaseTransformation{
 	@Override
 	public Object transformDomain(Map<String, Object> globalMap, HttpServletRequest request) {
 		globalMap.put("searchLocality", request.getParameter("loc"));
+		if(StringUtils.isNoneBlank(request.getParameter("keyword"))){
+			globalMap.put("searchKeyword", request.getParameter("keyword"));
+		}
 		setBusinessProfileUrl(globalMap, request);
 		setFilters(globalMap, request);
 		pagination(globalMap, request);

@@ -1,12 +1,15 @@
 $(document).ready(function(){
+	
 	/*	Location related functions start*/
 	//Localize the address functionality shared for desktop and mobile 
-/*	if (navigator.geolocation) {
+	$('.searchLocation').val('Pune, Maharashtra');//***IMPORTANT : remove this line if uncommenting below code
+	/*if (navigator.geolocation) {
 		console.log('in geolocation');
         navigator.geolocation.getCurrentPosition(function(position) {
         	var lat = position.coords.latitude;
         	var lng = position.coords.longitude;
-        	var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng='+lat+','+lng+'&language=en';
+        	//manually assigning the address to camp pune, replace it later with actual lat and lng
+        	var GEOCODING = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=18.5122306,73.88600999999994&language=en';
             $.getJSON(GEOCODING).done(function(location) {
             	console.log('length-'+location.results.length);
             	if(location.results.length >0 ){
@@ -101,7 +104,6 @@ $(document).ready(function(){
 function replaceQueryParam(param, newval, searchUrl) {
     var regex = new RegExp("([?;&])" + param + "[^&;]*[;&]?");
     var query = searchUrl.replace(regex, "$1").replace(/&$/, '');
-
     return (query.length > 2 ? query + "&" : "?") + (newval ? param + "=" + newval : '');
 }
 

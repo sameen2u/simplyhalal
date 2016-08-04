@@ -34,9 +34,9 @@ ul{
 	margin:0;
 	padding:0;
 }
-li {
+/* li {
     float: left;
-}
+} */
 label{
 	margin:2px;
 	color: gray;
@@ -4404,4 +4404,12 @@ a.morebtn {
 
 .fadeInCenter{
 	float: initial;
+}
+
+.autosuggs{
+    float: left;
+    width: 100%;
+    font:bold;
+    margin: 0;
+    padding: 0;
 }

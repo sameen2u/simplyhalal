@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.halal.web.sa.common.CommonUtil;
 import com.halal.web.sa.common.HalalGlobalConstants;
+import com.halal.web.sa.core.exception.ApplicationException;
 
 @Service
 public class BusinessService extends BaseService{
@@ -75,7 +76,7 @@ public class BusinessService extends BaseService{
 
 	@Override
 	protected Map<String, Object> buildRequestParam(
-			HttpServletRequest request) {
+			HttpServletRequest request) throws ApplicationException{
 		request.setAttribute(HalalGlobalConstants.API_METHOD, "POST");
 		return null;
 	}

@@ -39,11 +39,7 @@ public abstract class BaseService
 	    	  return object;
 	      }
 	      responseJson = apiService.getMethod(serviceURL, isCacheable());
-//	      if (StringUtils.isEmpty(responseJson)) {
-//	    	  throw new ApplicationException("problem here- Empty JSON response String");
-//	      }
 	      object = processResponse(responseJson, request, response); //CommonUtil.buildDomainMap(responseJson);
-//	      return object; 
 	  }
 	  else if (StringUtils.equals((String) request.getAttribute(HalalGlobalConstants.API_METHOD), "POST")){
 	      responseJson = apiService.postMethod(serviceURL, buildInputDataObject(request), MediaType.APPLICATION_JSON, isCacheable());
@@ -59,7 +55,7 @@ public abstract class BaseService
   /**
    * This method builds query parameters for the api endpoints url
    */
-  protected abstract Map<String, Object> buildRequestParam(HttpServletRequest request);
+  protected abstract Map<String, Object> buildRequestParam(HttpServletRequest request) throws ApplicationException;
   
   protected abstract String buildServiceUrl(HttpServletRequest request, Map<String, Object> requestParam);
   

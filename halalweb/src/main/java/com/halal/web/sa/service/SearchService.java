@@ -31,7 +31,7 @@ public class SearchService extends BaseService{
 	private static final Logger LOGGER = LoggerFactory.getLogger(SearchService.class);
 
 	@Override
-	protected Map<String, Object> buildRequestParam(HttpServletRequest request) {
+	protected Map<String, Object> buildRequestParam(HttpServletRequest request) throws ApplicationException{
 		request.setAttribute(HalalGlobalConstants.API_METHOD, "GET");
 		Map<String, Object> requestParam=null;
 		String address = request.getParameter("loc");

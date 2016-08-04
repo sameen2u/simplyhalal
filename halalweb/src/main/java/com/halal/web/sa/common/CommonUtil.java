@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.ObjectReader;
 public class CommonUtil {
 	
 	private static final Logger LOGGER = Logger.getLogger(CommonUtil.class);
-	private static ResourceBundle resourceBundle = ResourceBundle.getBundle("Environment");
+	private static ResourceBundle resourceBundle = ResourceBundle.getBundle("application");
 //	private static final String HOST_NAME = "API_HOST";
 //	private static final String PORT_NUM = "API_PORT";
 	private static final ObjectMapper mapper = new ObjectMapper();
@@ -24,13 +24,13 @@ public class CommonUtil {
 	
 	public static String buildUrl(String endPointUrl, Map<String, Object> requestProperty){
 		String host = resourceBundle.getString("API_HOST");
-		String port = resourceBundle.getString("API_PORT");
+//		String port = resourceBundle.getString("API_PORT");
 		String serviceUrl;
-		if(host.contains("localhost")){
-			serviceUrl = host+":"+port+"/"+endPointUrl;
-		}else{
+//		if(host.contains("localhost")){
+//			serviceUrl = host+":"+port+"/"+endPointUrl;
+//		}else{
 			serviceUrl = host+"/"+endPointUrl;
-		}
+//		}
 		if(requestProperty !=null && !requestProperty.isEmpty()){
 			return serviceUrl+"?"+constructQuery(requestProperty);
 		}
