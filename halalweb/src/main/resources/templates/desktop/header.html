@@ -58,7 +58,8 @@ html .ui-autocomplete { width:1px; } /* without this, the menu expands to 100% i
 				minLength:2,
 				source : function(request, response) {
 					$.ajax({
-						url : "http://localhost:9191/HalalApi/v1/business/search/pune",
+						//need to change the city name, set in cookie first
+						url : $('#loginApiUrl').val()+"/v1/business/search/pune",
 						type : "GET",
 						data : {
 							term : request.term

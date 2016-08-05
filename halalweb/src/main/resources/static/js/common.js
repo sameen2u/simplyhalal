@@ -2,7 +2,13 @@ $(document).ready(function(){
 	
 	/*	Location related functions start*/
 	//Localize the address functionality shared for desktop and mobile 
-	$('.searchLocation').val('Pune, Maharashtra');//***IMPORTANT : remove this line if uncommenting below code
+	var localizedAddress = readCookie('addr');
+	if(localizedAddress == null || localizedAddress.length <= 0){
+		localizedAddress = 'Camp, Pune, Maharashtra';
+		console.log('localizeAddress2 - '+localizedAddress);
+	}
+	$('.searchLocation').val(localizedAddress);//***IMPORTANT : remove this line if uncommenting below code
+
 	/*if (navigator.geolocation) {
 		console.log('in geolocation');
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -30,9 +36,15 @@ $(document).ready(function(){
 	//Google address auto fill functionality shared for desktop and mobile
     google.maps.event.addDomListener(window, 'load', intilize);
     function intilize() {
-        var autocomplete = new google.maps.places.Autocomplete(document.getElementById("txtautocomplete"), {types: ['geocode'],componentRestrictions: {country: "IN"}});
+        var autocomplete = new google.maps.places.Autocomplete(document.getElementById("txtautocomplete"), {types: ['(regions)'],componentRestrictions: {country: "IN"}});
         google.maps.event.addListener(autocomplete, 'place_changed', function () {
         var place = autocomplete.getPlace();
+        //this create cookie of the searched address
+        var addr = $('.searchLocation').val()
+        addr = addr.substr(0, addr.lastIndexOf(","));
+        createCookie('addr', addr, 60, '/');
+        
+        //this is used for business search
         document.getElementById('lattitude').value = place.geometry.location.lat();
         document.getElementById('longitude').value = place.geometry.location.lng();
         });
@@ -135,7 +147,7 @@ function readCookie(name) {
 }
 
 function createCookie(name , value, expiry, urlPath){
-	document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value)+ expiry + "; path="+urlPath;
+	document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value)+"; path="+urlPath;
 }
 
 function deleteCookie(name){

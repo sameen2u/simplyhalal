@@ -48,6 +48,8 @@ public class AdviceController extends BaseController{
 		else{
 			baseUrl = protocol+host+contextPath;
 		}
+		String loginApiUrl = HalalGlobalConstants.API_SERVICE_URL;
+		model.addAttribute("loginApiUrl", loginApiUrl);
 		model.addAttribute("baseUrl",baseUrl);
 		request.setAttribute("baseUrl",baseUrl);
 		model.addAttribute("contextPath",contextPath);
