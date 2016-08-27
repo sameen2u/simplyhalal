@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.halal.web</groupId>
   <artifactId>halalweb</artifactId>
-  <packaging>war</packaging>
+  <packaging>jar</packaging>
   <version>0.1</version>
   
   <parent>
@@ -14,7 +14,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
+		<java.version>1.7</java.version>
 	</properties>
 
 	<dependencies>

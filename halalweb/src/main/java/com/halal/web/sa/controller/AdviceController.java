@@ -42,12 +42,13 @@ public class AdviceController extends BaseController{
 		}
 		String contextPath = request.getContextPath();
 		String host = request.getServerName();
-		if(host.contains("localhost")){
-			baseUrl = protocol+host+":"+request.getServerPort()+contextPath;
-		}
-		else{
-			baseUrl = protocol+host+contextPath;
-		}
+//		int port = request.getServerPort();
+//		if(host.contains("localhost")){
+		baseUrl = protocol+host+":"+request.getServerPort()+contextPath;
+//		}
+//		else{
+//			baseUrl = protocol+host+contextPath;
+//		}
 		String loginApiUrl = HalalGlobalConstants.API_SERVICE_URL;
 		model.addAttribute("loginApiUrl", loginApiUrl);
 		model.addAttribute("baseUrl",baseUrl);
@@ -74,12 +75,12 @@ public class AdviceController extends BaseController{
 		}
 		String contextPath = request.getContextPath();
 		String host = request.getServerName();
-		if(host.contains("localhost")){
-			baseUrl = protocol+host+":"+request.getServerPort()+contextPath;
-		}
-		else{
-			baseUrl = protocol+host+contextPath;
-		}
+//		if(host.contains("localhost")){
+		baseUrl = protocol+host+":"+request.getServerPort()+contextPath;
+//		}
+//		else{
+//			baseUrl = protocol+host+contextPath;
+//		}
 		modelAndView.addObject("contextPath",contextPath);
 		modelAndView.addObject("baseUrl",baseUrl);
 		
