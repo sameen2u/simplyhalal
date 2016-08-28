@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.halal.web</groupId>
   <artifactId>halalweb</artifactId>
-  <packaging>jar</packaging>
+  <packaging>war</packaging>
   <version>0.1</version>
   
   <parent>
