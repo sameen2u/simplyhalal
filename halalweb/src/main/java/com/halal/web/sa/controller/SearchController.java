@@ -38,7 +38,7 @@ public class SearchController extends BaseController{
 		
 		modelAndView.addObject("ishomepage","homepage");
 		modelAndView.addObject("baseUrl", request.getAttribute("baseUrl"));
-		String finalHtml = getHtmlTemplate(channel+"/homepage.html", null);
+		String finalHtml = getHtmlTemplate(channel+"/homepage.html", modelAndView.getModel());
 		modelAndView.addObject("finalHTML",finalHtml);
 		return modelAndView;
 	}
